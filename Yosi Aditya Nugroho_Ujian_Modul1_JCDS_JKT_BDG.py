@@ -36,6 +36,10 @@ create_phone_number(number)
 number = '!@#$%^&*()'
 create_phone_number(number)
 
+# number = input('Input your phone number: ')
+number = '123!@#!'
+create_phone_number(number)
+
 # Soal 2
 print('\nSoal 2')
 def moveZeros(list_input):
@@ -46,6 +50,7 @@ def moveZeros(list_input):
 moveZeros([False, 1, 0, 1, 2, 0, 1, 3, 'a'])
 moveZeros([0, 0, 0, 'Test', 0, 3, 'a', True, False])
 moveZeros([0, True, True, False, 'a', 'b', 1, 1, 1])
+moveZeros([0, 0, 0, 'Test', 0, 3, 'a', 0, '0', True, '0', False])
 
 # Soal 3
 print('\nSoal 3')
@@ -55,14 +60,14 @@ class Statistic():
 
     def mean(self, input_list):
         if any(filter(lambda x: type(x) != int, input_list)):
-            print('Invalid Input! All values must be Integer.')
+            return 'Invalid Input! All values must be Integer.'
         else:
             mean = sum(input_list)/len(input_list) 
             return round(mean, 3)
 
     def median(self, input_list):
         if any(filter(lambda x: type(x) != int, input_list)):
-            print('Invalid Input! All values must be Integer.')
+            return 'Invalid Input! All values must be Integer.'
         else:
             input_list.sort()
             median_idx = 0
@@ -77,7 +82,7 @@ class Statistic():
 
     def mode(self, input_list):
         if any(filter(lambda x: type(x) != int, input_list)):
-            print('Invalid Input! All values must be Integer.')
+            return 'Invalid Input! All values must be Integer.'
         else:
             counter = dict()
             for elem in input_list:
@@ -97,13 +102,13 @@ class Statistic():
                 
     def std(self, input_list):
         if any(filter(lambda x: type(x) != int, input_list)):
-            print('Invalid Input! All values must be Integer.')
+            return 'Invalid Input! All values must be Integer.'
         else:
             mean = sum(input_list)/len(input_list)
             variance_list = list(map(lambda x: (x-mean)**2, input_list))
             std = (sum(variance_list)/len(input_list))**0.5
             # Need to round the result?
-            return print(round(std, 3))
+            return round(std, 3)
 
 st = Statistic()
 print('\nCase 1')
@@ -123,4 +128,9 @@ print(st.mean([4, 5, 2, 1, 6, 7]))
 print(st.median([4, 5, 2, 1, 6, 7]))
 print(st.mode([1, 2, 4, 5, 6, 7]))
 print(st.std([1, 2, 4, 5, 6, 7]))
+
+print('\nCase 4')
+print(st.mean([1, 2, 4, 4, 5, 6, 7, 7]))
+print(st.median([1, 2, 4, 4, 5, 6, 7, 7]))
 print(st.mode([1, 2, 4, 4, 5, 6, 7, 7]))
+print(st.std([1, 2, 4, 4, 5, 6, 7, 7]))
